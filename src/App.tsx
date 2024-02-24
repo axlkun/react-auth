@@ -11,17 +11,16 @@ function App() {
 
     <div className='App'>
 
-      <Navigation />
-
-      <main>
-        <BrowserRouter>
+      <BrowserRouter>
+        <Navigation />
+        <main>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
           </Routes>
-        </BrowserRouter>
-      </main>
+        </main>
+      </BrowserRouter>
     </div>
 
   )
