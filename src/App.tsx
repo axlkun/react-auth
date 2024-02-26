@@ -10,35 +10,35 @@ function App() {
 
   const [name, setName] = useState('');
 
-    const userEndpoint = 'http://localhost:8000/api/user';
+  const userEndpoint = 'http://localhost:8000/api/user';
 
-    useEffect(() => {
-        (
-            async () => {
-                const response = await fetch(userEndpoint, {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    credentials: 'include'
-                });
+  useEffect(() => {
+    (
+      async () => {
+        const response = await fetch(userEndpoint, {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          credentials: 'include'
+        });
 
-                const content = await response.json();
+        const content = await response.json();
 
-                setName(content.name);
-            }
-        )();
-    },[]);
+        setName(content.name);
+      }
+    )();
+  }, []);
 
   return (
 
     <div className='App'>
 
       <BrowserRouter>
-        <Navigation />
+        <Navigation name={name} setName={setName} />
         <main>
           <Routes>
             <Route path='/' element={<Home name={name} />} />
-            <Route path='/login' element={<Login />} />
+            <Route path='/login' element={<Login setName={setName} />} />
             <Route path='/register' element={<Register />} />
           </Routes>
         </main>

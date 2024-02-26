@@ -1,7 +1,7 @@
 import { SyntheticEvent, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = (props: { setName: (name: string) => void }) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -13,7 +13,7 @@ const Login = () => {
     const submit = async (e: SyntheticEvent) => {
         e.preventDefault();
 
-        await fetch(loginEndpoint, {
+        const response = await fetch(loginEndpoint, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -24,6 +24,10 @@ const Login = () => {
                 password
             })
         });
+
+        const content = await response.json();
+
+        props.setName(content.name);
 
         setRedirectPage(true);
     }
