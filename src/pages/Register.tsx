@@ -9,7 +9,7 @@ const Register = () => {
     const [redirectPage, setRedirectPage] = useState(false);
     const navigate = useNavigate();
 
-    const registerEndpoint = 'http://127.0.0.1:8000/api/register';
+    const registerEndpoint = 'http://localhost:8000/api/register';
 
     const submit = async (e: SyntheticEvent) => {
         e.preventDefault();
