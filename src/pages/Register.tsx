@@ -44,15 +44,15 @@ const Register = () => {
             </div>
             <div className="mb-3">
                 <label className="form-label">Name</label>
-                <input className="form-control" id="exampleInputName" aria-describedby="nameHelp" onChange={e => setName(e.target.value)} />
+                <input className="form-control" id="exampleInputName" aria-describedby="nameHelp" onChange={e => setName(e.target.value)} required/>
             </div>
             <div className="mb-3">
                 <label className="form-label">Email address</label>
-                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={e => setEmail(e.target.value)} />
+                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={e => setEmail(e.target.value)} required/>
             </div>
             <div className="mb-3">
                 <label className="form-label">Password</label>
-                <input type="password" className="form-control" id="exampleInputPassword1" onChange={e => setPassword(e.target.value)} />
+                <input type="password" className="form-control" id="exampleInputPassword1" onChange={e => setPassword(e.target.value)} required/>
             </div>
             <button type="submit" className="btn btn-primary" onClick={submit}>Submit</button>
         </form>
