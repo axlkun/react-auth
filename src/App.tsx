@@ -4,8 +4,30 @@ import Navigation from './components/Navigation'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import Register from './pages/Register'
+import { useState, useEffect } from 'react'
 
 function App() {
+
+  const [name, setName] = useState('');
+
+    const userEndpoint = 'http://localhost:8000/api/user';
+
+    useEffect(() => {
+        (
+            async () => {
+                const response = await fetch(userEndpoint, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'include'
+                });
+
+                const content = await response.json();
+
+                setName(content.name);
+            }
+        )();
+    },[]);
 
   return (
 
@@ -15,7 +37,7 @@ function App() {
         <Navigation />
         <main>
           <Routes>
-            <Route path='/' element={<Home />} />
+            <Route path='/' element={<Home name={name} />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
           </Routes>
