@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react'
 function App() {
 
   const [name, setName] = useState('');
+  const [authenticated, setAuthenticated] = useState(false);
 
   const userEndpoint = 'http://localhost:8000/api/user';
 
@@ -27,7 +28,7 @@ function App() {
         setName(content.name);
       }
     )();
-  }, []);
+  }, [authenticated]);
 
   return (
 
@@ -38,7 +39,7 @@ function App() {
         <main>
           <Routes>
             <Route path='/' element={<Home name={name} />} />
-            <Route path='/login' element={<Login setName={setName} />} />
+            <Route path='/login' element={<Login setAuthenticated={setAuthenticated} />} />
             <Route path='/register' element={<Register />} />
           </Routes>
         </main>

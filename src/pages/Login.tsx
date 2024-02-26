@@ -1,7 +1,7 @@
 import { SyntheticEvent, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Login = (props: { setName: (name: string) => void }) => {
+const Login = (props: { setAuthenticated: (authenticated: boolean) => void }) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -25,11 +25,10 @@ const Login = (props: { setName: (name: string) => void }) => {
             })
         });
 
-        const content = await response.json();
-
-        props.setName(content.name);
-
-        setRedirectPage(true);
+        if (response.ok) {
+            props.setAuthenticated(true);
+            setRedirectPage(true);
+        }
     }
 
     useEffect(() => {
