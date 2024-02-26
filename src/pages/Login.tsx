@@ -8,7 +8,7 @@ const Login = () => {
     const [redirectPage, setRedirectPage] = useState(false);
     const navigate = useNavigate();
 
-    const loginEndpoint = 'http://127.0.0.1:8000/api/login';
+    const loginEndpoint = 'http://localhost:8000/api/login';
 
     const submit = async (e: SyntheticEvent) => {
         e.preventDefault();
@@ -45,7 +45,7 @@ const Login = () => {
             </div>
             <div className="mb-3">
                 <label className="form-label">Password</label>
-                <input type="password" className="form-control" id="exampleInputPassword1" onChange={e => setPassword(e.target.value)} required/>
+                <input type="password" className="form-control" id="exampleInputPassword1" onChange={e => setPassword(e.target.value)} required />
             </div>
             <button type="submit" className="btn btn-primary">Submit</button>
         </form>
